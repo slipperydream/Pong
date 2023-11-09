@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://f6w17qq6ebqe"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_frkra"]
+[ext_resource type="PackedScene" uid="uid://dcg4cvvi52kut" path="res://wall.tscn" id="2_644n0"]
+[ext_resource type="PackedScene" uid="uid://cwq71p5451a1g" path="res://ball.tscn" id="3_8lswj"]
+[ext_resource type="PackedScene" uid="uid://dsjd18st25fq5" path="res://paddle.tscn" id="4_7a7kr"]
+[ext_resource type="PackedScene" uid="uid://dq5keub5rdyqu" path="res://ui.tscn" id="5_ipaef"]
+[ext_resource type="PackedScene" uid="uid://bgokopw8g8rdh" path="res://main_menu.tscn" id="6_ca54l"]
+[ext_resource type="PackedScene" uid="uid://ew0clqkufdnm" path="res://settings.tscn" id="7_sl7wu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sy05"]
+size = Vector2(12, 610.625)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_frkra")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="background" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="TopWall" parent="CanvasLayer" instance=ExtResource("2_644n0")]
+
+[node name="BottomWall" parent="CanvasLayer" instance=ExtResource("2_644n0")]
+position = Vector2(0, 626)
+
+[node name="LeftGoal" type="Area2D" parent="CanvasLayer"]
+position = Vector2(-5, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/LeftGoal"]
+position = Vector2(5, 305.125)
+shape = SubResource("RectangleShape2D_1sy05")
+
+[node name="RightGoal" type="Area2D" parent="CanvasLayer"]
+position = Vector2(1142, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/RightGoal"]
+position = Vector2(6, 304.688)
+shape = SubResource("RectangleShape2D_1sy05")
+
+[node name="Ball" parent="CanvasLayer" instance=ExtResource("3_8lswj")]
+
+[node name="LeftPaddle" parent="CanvasLayer" instance=ExtResource("4_7a7kr")]
+position = Vector2(500, 316)
+
+[node name="RightPaddle" parent="CanvasLayer" instance=ExtResource("4_7a7kr")]
+position = Vector2(500, 316)
+is_left_paddle = false
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("5_ipaef")]
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("6_ca54l")]
+offset_top = -82.5
+offset_bottom = 82.5
+
+[node name="Settings" parent="CanvasLayer" instance=ExtResource("7_sl7wu")]
+visible = false
+
+[connection signal="game_over" from="." to="." method="_on_game_over"]
+[connection signal="game_over" from="." to="CanvasLayer/LeftPaddle" method="_on_main_game_over"]
+[connection signal="game_over" from="." to="CanvasLayer/RightPaddle" method="_on_main_game_over"]
+[connection signal="game_over" from="." to="CanvasLayer/UI" method="_on_main_game_over"]
+[connection signal="left_scored" from="." to="CanvasLayer/UI" method="_on_main_left_scored"]
+[connection signal="new_game" from="." to="CanvasLayer/LeftPaddle" method="_on_main_new_game"]
+[connection signal="new_game" from="." to="CanvasLayer/RightPaddle" method="_on_main_new_game"]
+[connection signal="new_game" from="." to="CanvasLayer/UI" method="_on_main_new_game"]
+[connection signal="reset" from="." to="CanvasLayer/LeftPaddle" method="_on_main_reset"]
+[connection signal="reset" from="." to="CanvasLayer/RightPaddle" method="_on_main_reset"]
+[connection signal="reset" from="." to="CanvasLayer/UI" method="_on_main_reset"]
+[connection signal="right_scored" from="." to="CanvasLayer/UI" method="_on_main_right_scored"]
+[connection signal="wall_height" from="." to="CanvasLayer/LeftPaddle" method="_on_main_wall_height"]
+[connection signal="wall_height" from="." to="CanvasLayer/RightPaddle" method="_on_main_wall_height"]
+[connection signal="body_entered" from="CanvasLayer/LeftGoal" to="." method="_on_left_goal_body_entered"]
+[connection signal="body_entered" from="CanvasLayer/RightGoal" to="." method="_on_right_goal_body_entered"]
+[connection signal="countdown_done" from="CanvasLayer/UI" to="." method="_on_ui_countdown_done"]
+[connection signal="num_players" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_num_players"]
+[connection signal="open_settings" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_open_settings"]
+[connection signal="lp_color" from="CanvasLayer/Settings" to="." method="_on_settings_lp_color"]
+[connection signal="play_to" from="CanvasLayer/Settings" to="." method="_on_settings_play_to"]
+[connection signal="rp_color" from="CanvasLayer/Settings" to="." method="_on_settings_rp_color"]
