@@ -11,7 +11,6 @@ class_name Ball
 func _ready():
 	pass
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
@@ -37,3 +36,13 @@ func play_hit():
 	var sound = hit_sounds[randi() % hit_sounds.size()]
 	sound_player.stream = sound
 	sound_player.play()
+
+
+func _on_settings_speed_set(speed):
+	match speed:
+		"NORMAL":
+			max_speed = 250
+		"FAST": 
+			max_speed = 325
+		"VERY FAST":
+			max_speed = 400

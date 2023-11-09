@@ -83,3 +83,5 @@ visible = false
 [connection signal="lp_color" from="CanvasLayer/Settings" to="." method="_on_settings_lp_color"]
 [connection signal="play_to" from="CanvasLayer/Settings" to="." method="_on_settings_play_to"]
 [connection signal="rp_color" from="CanvasLayer/Settings" to="." method="_on_settings_rp_color"]
+[connection signal="settings_closed" from="CanvasLayer/Settings" to="." method="_on_settings_settings_closed"]
+[connection signal="speed_set" from="CanvasLayer/Settings" to="CanvasLayer/Ball" method="_on_settings_speed_set"]

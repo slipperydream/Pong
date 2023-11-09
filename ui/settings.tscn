@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ew0clqkufdnm"]
+[gd_scene load_steps=4 format=3 uid="uid://ew0clqkufdnm"]
 
 [ext_resource type="Script" path="res://ui/settings.gd" id="1_urtni"]
 
@@ -9,9 +9,16 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phcwa"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
 [node name="Settings" type="Panel"]
 process_mode = 3
-custom_minimum_size = Vector2(275, 256)
+custom_minimum_size = Vector2(280, 256)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -44,15 +51,16 @@ text = "Settings"
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 68.0
-offset_bottom = 99.0
+offset_top = 59.0
+offset_right = -10.0
+offset_bottom = 90.0
 grow_horizontal = 2
-alignment = 1
+alignment = 2
 
 [node name="Score_Label" type="Label" parent="HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Play to:"
+text = "Play to: "
 
 [node name="SpinBox" type="SpinBox" parent="HBoxContainer3"]
 layout_mode = 2
@@ -65,22 +73,52 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Points"
 
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -40.5
+offset_right = -10.0
+offset_bottom = -9.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Speed_Label" type="Label" parent="HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Ball Speed: "
+
+[node name="BallSpeed" type="OptionButton" parent="HBoxContainer4"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "NORMAL"
+popup/item_0/id = 6
+popup/item_1/text = "FAST"
+popup/item_1/id = 1
+popup/item_2/text = "VERY FAST"
+popup/item_2/id = 2
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -15.5
-offset_bottom = 15.5
+offset_top = -7.5
+offset_right = -10.0
+offset_bottom = 23.5
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+alignment = 2
 
 [node name="LP_Label" type="Label" parent="HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Left Paddle Color"
+text = "Left Paddle Color: "
 
 [node name="LeftPaddleColor" type="OptionButton" parent="HBoxContainer2"]
 layout_mode = 2
@@ -107,16 +145,17 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = 21.5
-offset_bottom = 52.5
+offset_top = 29.5
+offset_right = -10.0
+offset_bottom = 60.5
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+alignment = 2
 
 [node name="RP_Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Right Paddle Color"
+text = "Right Paddle Color: "
 
 [node name="RightPaddleColor" type="OptionButton" parent="HBoxContainer"]
 layout_mode = 2
@@ -138,7 +177,7 @@ popup/item_6/text = "PURPLE"
 popup/item_6/id = 6
 
 [node name="Button" type="Button" parent="."]
-custom_minimum_size = Vector2(48, 32)
+custom_minimum_size = Vector2(56, 32)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -151,9 +190,15 @@ offset_right = 4.0
 offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_phcwa")
 text = "CLOSE"
 
 [connection signal="value_changed" from="HBoxContainer3/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="item_selected" from="HBoxContainer4/BallSpeed" to="." method="_on_ball_speed_item_selected"]
 [connection signal="item_selected" from="HBoxContainer2/LeftPaddleColor" to="." method="_on_left_paddle_color_item_selected"]
 [connection signal="item_selected" from="HBoxContainer/RightPaddleColor" to="." method="_on_right_paddle_color_item_selected"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

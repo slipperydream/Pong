@@ -103,14 +103,14 @@ func _on_settings_rp_color(value):
 	
 func _input(event):
 	if event.is_action_pressed("pause"):
-		if get_tree().paused:
+		if get_tree().paused:			
+			emit_signal("paused", get_tree().paused)
 			get_tree().paused = false
-			emit_signal("paused", get_tree().paused)
 		else:
-			get_tree().paused = true
 			emit_signal("paused", get_tree().paused)
-
+			get_tree().paused = true
 
 func _on_settings_settings_closed():
 	if get_tree().paused:
 		get_tree().paused = false
+
