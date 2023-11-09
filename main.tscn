@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dcg4cvvi52kut" path="res://wall.tscn" id="2_644n0"]
 [ext_resource type="PackedScene" uid="uid://cwq71p5451a1g" path="res://ball.tscn" id="3_8lswj"]
 [ext_resource type="PackedScene" uid="uid://dsjd18st25fq5" path="res://paddle.tscn" id="4_7a7kr"]
-[ext_resource type="PackedScene" uid="uid://dq5keub5rdyqu" path="res://ui.tscn" id="5_ipaef"]
-[ext_resource type="PackedScene" uid="uid://bgokopw8g8rdh" path="res://main_menu.tscn" id="6_ca54l"]
-[ext_resource type="PackedScene" uid="uid://ew0clqkufdnm" path="res://settings.tscn" id="7_sl7wu"]
+[ext_resource type="PackedScene" uid="uid://dq5keub5rdyqu" path="res://ui/ui.tscn" id="5_ipaef"]
+[ext_resource type="PackedScene" uid="uid://bgokopw8g8rdh" path="res://ui/main_menu.tscn" id="6_ca54l"]
+[ext_resource type="PackedScene" uid="uid://ew0clqkufdnm" path="res://ui/settings.tscn" id="7_sl7wu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sy05"]
 size = Vector2(12, 610.625)

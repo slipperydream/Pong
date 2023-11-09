@@ -3,9 +3,10 @@ extends CharacterBody2D
 class_name Ball
 
 @export var max_speed : int = 250
-
 @onready var screen_size : Vector2 = get_viewport_rect().size
+@onready var sound_player = $AudioStreamPlayer2D
 
+@export var hit_sounds : Array[AudioStreamOggVorbis] = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -13,9 +14,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
 	var collision = move_and_collide(velocity * delta)
 	if collision:
+		play_hit()
 		velocity = velocity.bounce(collision.get_normal())
 		if collision.get_collider().has_method("hit"):
 			collision.get_collider().hit()
@@ -30,3 +31,9 @@ func get_seed():
 	var nums = [-1,-0.75, -0.5, 0.5, 0.75,1]
 	randomize()
 	return nums[randi() % nums.size()]
+
+func play_hit():
+	sound_player.volume_db = -20
+	var sound = hit_sounds[randi() % hit_sounds.size()]
+	sound_player.stream = sound
+	sound_player.play()
