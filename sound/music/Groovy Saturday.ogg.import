@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bu74ayn6bnbn3"
+path="res://.godot/imported/Groovy Saturday.ogg-e8af5224434efbdda1505f65d62054ca.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/music/Groovy Saturday.ogg"
+dest_files=["res://.godot/imported/Groovy Saturday.ogg-e8af5224434efbdda1505f65d62054ca.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

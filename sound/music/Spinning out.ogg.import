@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://hp7pma8wg8dy"
+path="res://.godot/imported/Spinning out.ogg-ab8a5111034e9c25852061ec810e21ce.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/music/Spinning out.ogg"
+dest_files=["res://.godot/imported/Spinning out.ogg-ab8a5111034e9c25852061ec810e21ce.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
