@@ -6,7 +6,7 @@ class_name Ball
 @onready var screen_size : Vector2 = get_viewport_rect().size
 @onready var sound_player = $AudioStreamPlayer2D
 
-@export var hit_sounds : Array[AudioStreamOggVorbis] = []
+@export var hit_sounds : Array[AudioStreamWAV] = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -17,6 +17,8 @@ func _physics_process(delta):
 	if collision:
 		play_hit()
 		velocity = velocity.bounce(collision.get_normal())
+		velocity.x *= 1.05
+		velocity.y *= 1.05
 		if collision.get_collider().has_method("hit"):
 			collision.get_collider().hit()
 
