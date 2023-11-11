@@ -6,10 +6,10 @@ class_name Ball
 @onready var screen_size : Vector2 = get_viewport_rect().size
 @onready var sound_player = $AudioStreamPlayer2D
 
-@export var hit_sounds : Array[AudioStreamWAV] = []
+@onready var hit_sounds : Array = ["res://sound/sfx/Cancel 1.wav", "res://sound/sfx/Confirm 1.wav", "res://sound/sfx/Select 1.wav"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	hit_sounds.size()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -35,7 +35,7 @@ func get_seed():
 
 func play_hit():
 	sound_player.volume_db = -20
-	var sound = hit_sounds[randi() % hit_sounds.size()]
+	var sound = load(hit_sounds[randi() % hit_sounds.size()])
 	sound_player.stream = sound
 	sound_player.play()
 

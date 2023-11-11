@@ -8,7 +8,7 @@ signal game_over
 signal reset
 signal paused
 
-@export var play_to_score : int = 1
+@export var play_to_score : int = 5
 
 @onready var left_paddle = $CanvasLayer/LeftPaddle
 @onready var right_paddle = $CanvasLayer/RightPaddle

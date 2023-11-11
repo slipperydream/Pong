@@ -25,7 +25,6 @@ func _on_left_paddle_color_item_selected(index):
 	var color = lp_color_setting.get_item_text(index)
 	emit_signal("lp_color", color)
 
-
 func _on_right_paddle_color_item_selected(index):
 	var color = rp_color_setting.get_item_text(index)
 	emit_signal("rp_color", color)

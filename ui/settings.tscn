@@ -65,8 +65,8 @@ text = "Play to: "
 [node name="SpinBox" type="SpinBox" parent="HBoxContainer3"]
 layout_mode = 2
 min_value = 1.0
-max_value = 1.0
-value = 1.0
+max_value = 13.0
+value = 5.0
 alignment = 2
 
 [node name="Score_Label2" type="Label" parent="HBoxContainer3"]
