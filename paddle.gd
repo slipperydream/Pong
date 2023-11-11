@@ -22,7 +22,7 @@ func get_input():
 	vert_speed = input_dir * speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if computer_controlled:
 		get_computer_movement()
 	else:

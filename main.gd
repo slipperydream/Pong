@@ -6,6 +6,7 @@ signal right_scored
 signal new_game
 signal game_over
 signal reset
+signal paused
 
 @export var play_to_score : int = 1
 
@@ -13,6 +14,7 @@ signal reset
 @onready var right_paddle = $CanvasLayer/RightPaddle
 @onready var ball = $CanvasLayer/Ball
 @onready var screen_size : Vector2 = get_viewport_rect().size
+@onready var settings = $CanvasLayer/Settings
 
 var left_score : int = 0
 var right_score : int = 0
@@ -68,8 +70,8 @@ func _on_main_menu_num_players(value):
 		right_paddle.computer_controlled = true
 
 func _on_main_menu_open_settings():
-	$CanvasLayer/Settings.show()
-	$CanvasLayer/Settings.start(play_to_score)
+	settings.show()
+	settings.start(play_to_score)
 	
 func _on_settings_play_to(value):
 	play_to_score = value
@@ -98,3 +100,17 @@ func _on_settings_lp_color(value):
 func _on_settings_rp_color(value):
 	var color = get_color(value)
 	$CanvasLayer/RightPaddle/Sprite2D.modulate = color
+	
+func _input(event):
+	if event.is_action_pressed("pause"):
+		if get_tree().paused:			
+			emit_signal("paused", get_tree().paused)
+			get_tree().paused = false
+		else:
+			emit_signal("paused", get_tree().paused)
+			get_tree().paused = true
+
+func _on_settings_settings_closed():
+	if get_tree().paused:
+		get_tree().paused = false
+

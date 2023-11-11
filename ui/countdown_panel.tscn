@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqovgipben058"]
 
-[ext_resource type="Script" path="res://countdown_panel.gd" id="1_0nosv"]
+[ext_resource type="Script" path="res://ui/countdown_panel.gd" id="1_0nosv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c507p"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

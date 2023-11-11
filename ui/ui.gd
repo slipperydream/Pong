@@ -38,3 +38,9 @@ func _on_main_new_game():
 	left_score.text = str(0)
 	right_score.text = str(0)
 	$WinnerLabel.hide()
+
+func _on_main_paused(value):
+	if value:
+		$PauseLabel.show()
+	else:
+		$PauseLabel.hide()
